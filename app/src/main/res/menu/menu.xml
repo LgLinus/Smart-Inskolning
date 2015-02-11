@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+     >
+    <item
+        android:id="@+id/menu_start_page"
+        android:title="@string/menu_start_page"/>
+    <item
+        android:id="@+id/menu_here_we_are"
+        android:title="@string/menu_here_we_are"/>
+    <item
+        android:id="@+id/menu_routine"
+        android:title="@string/menu_routine"/>
+    <item
+        android:id="@+id/menu_schedule"
+        android:title="@string/menu_schedule"/>
+    <item
+        android:id="@+id/menu_equipment"
+
+        android:title="@string/menu_equipment"/>
+    <item
+        android:id="@+id/menu_about_child"
+        android:title="@string/menu_about_child"/>
+    <item
+        android:id="@+id/menu_evaluation"
+        android:title="@string/menu_evaluation"/>
+    <item
+        android:id="@+id/menu_contact"
+        android:title="@string/menu_contact"/>
+</menu>
