@@ -6,24 +6,174 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="h.ghg.dstdsg.smartinskolning.Activity_Contacts">
 
-    <ImageButton
-        android:id="@+id/ibMenu"
-        android:layout_width="96px"
-        android:layout_height="96px"
-        android:background="@drawable/menu_button"/>
+    <include
+        android:id="@+id/inlHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header"
+        />
+
     <TextView
-        android:id="@+id/tvWelcome"
+        android:id="@+id/tvContact_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/contact"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/default_text_size"
+        android:layout_below="@id/inlHeader"
+        android:textSize="@dimen/default_text_size_message_title"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:textColor="@color/text"/>
-    <View
-        android:id="@+id/vLine"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mail"
+        android:layout_below="@id/tvContact_Title"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvContact_Mail_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placeholder mail"
+        android:layout_below="@id/tvContact_Title"
+        android:layout_toRightOf="@id/tvContact_Mail"
+        android:autoLink="email"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone"
+        android:layout_below="@id/tvContact_Mail_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Phone_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placeholder phone"
+        android:layout_below="@id/tvContact_Mail_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@id/tvContact_Phone"
+        android:autoLink="phone"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        android:layout_below="@id/tvContact_Phone_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Address_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placeholder address"
+        android:layout_below="@id/tvContact_Phone_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@id/tvContact_Address"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvContact_Sick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sick_call"
+        android:layout_below="@id/tvContact_Address_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvContact_Sick_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placeholder number"
+        android:layout_below="@id/tvContact_Address_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:layout_toRightOf="@id/tvContact_Sick"
+        android:autoLink="phone"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvContact_Map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/map"
+        android:layout_below="@id/tvContact_Sick_Info"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvContact_Map_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placeholder location"
+        android:layout_below="@id/tvContact_Sick_Info"
+        android:layout_toRightOf="@id/tvContact_Map"
+        android:autoLink="map"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+    <LinearLayout
+        android:id="@+id/LlContact_top"
         android:layout_width="fill_parent"
-        android:layout_below="@id/ibMenu"
-        android:layout_height="2dp"
-        android:background="@color/background_darker"/>
+        android:weightSum="6"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvContact_Map">
+        <View
+            android:layout_width="0dp"
+            android:layout_below="@id/inlHeader"
+            android:layout_height="2dp"
+            android:layout_weight="3"/>
+        <TextView
+            android:id="@+id/tvContact_Open"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/open"
+            android:layout_weight="3"
+            android:textSize="@dimen/default_text_size_message"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:weightSum="6"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LlContact_top">
+        <View
+            android:layout_width="0dp"
+            android:layout_below="@id/inlHeader"
+            android:layout_height="2dp"
+            android:layout_weight="3"/>
+        <TextView
+            android:id="@+id/tvContact_Open_Info"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="placeholder"
+            android:textSize="@dimen/default_text_size_message"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/questions_number"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

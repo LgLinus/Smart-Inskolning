@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvSchedule_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_routine_questions_call"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/default_text_size_message"
+        android:paddingLeft="@dimen/activity_horizontal_margin_login"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvCall_Click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_routine_number"
+        android:layout_below="@id/tvRoutine_Message"
+        android:layout_toRightOf="@id/tvSchedule_questions"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/default_text_size_message"
+        android:layout_centerHorizontal="true"
+        android:autoLink="phone"
+        android:textColor="@color/black"/>
+</LinearLayout>

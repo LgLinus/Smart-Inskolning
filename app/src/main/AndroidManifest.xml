@@ -44,12 +44,22 @@
             android:label="@string/title_activity_activity__about__child" >
         </activity>
         <activity
+            android:name=".Activity_About_Child_2">
+        </activity>
+        <activity
+            android:name=".Activity_About_Child_3">
+        </activity>
+        <activity
             android:name=".Activity_Routine"
             android:label="@string/title_activity_activity__routine" >
         </activity>
         <activity
             android:name=".Activity_Evaluation"
             android:label="@string/title_activity_activity__evaluation" >
+        </activity>
+        <activity
+            android:name=".Activity_Evaluation_2"
+            android:label="" >
         </activity>
     </application>
 

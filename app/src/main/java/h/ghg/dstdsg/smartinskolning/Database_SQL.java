@@ -38,10 +38,16 @@ public class Database_SQL extends SQLiteOpenHelper {
     public static final String ACCOUNTS_FEARS = "_fears";
     public static final String ACCOUNTS_LIKES = "_likes";
     public static final String ACCOUNTS_REST = "_rest";
-    public static final String TABLE_ACCOUNT_DETAILS_LAYOUT = "(" + ACCOUNTS_USERNAME + " text primary key," + ACCOUNTS_ALLERGY + " integer, "
-            + ACCOUNTS_ALLERGY_DETAILS + " text, " + ACCOUNTS_DISEASE + " integer, " + ACCOUNTS_DISEASE_DETAILS + " text, " + ACCOUNTS_DISABILITY
-            + " integer, " + ACCOUNTS_DISABILITY_DETAILS + " text, " + ACCOUNTS_FOOD_HABITS + " text, " + ACCOUNTS_SLEEPING_HABITS + " text, "
-            + ACCOUNTS_FEARS + " text, " + ACCOUNTS_LIKES + " text, " + ACCOUNTS_REST + " text);";
+
+
+    public static final String TABLE_ACCOUNT_EVALUATION = "Evaluation";
+    public static final String ACCOUNTS_EV_EXPERIENCE_APP = "_ev_experience";
+    public static final String ACCOUNTS_EV_EXPERIENCE_APP2 = "_ev_experience2";
+    public static final String ACCOUNTS_EV_OTHER = "_ev_other";
+    public static final String ACCOUNTS_EV_OTHER2 = "_ev_other2";
+    public static final String ACCOUNTS_EV_HAS_INFO_CLEAR = "_ev_has_info";
+    public static final String ACCOUNTS_EV_INFO_CLEAR = "_ev_info";
+    public static final String ACCOUNTS_EV_FEATURES = "_ev_feaures";
 
     public static final String KEY_WELCOME_TITLE = "welcome_title";
     public static final  String KEY_WELCOME_MESSAGE = "welcome_message";
@@ -55,24 +61,56 @@ public class Database_SQL extends SQLiteOpenHelper {
     public static final  String KEY_ROUTINE_MESSAGE ="routine_message";
     public static final  String KEY_SCHEDULE_TITLE ="schedule_title";
     public static final  String KEY_SCHEDULE_MESSAGE ="schedule_message";
+    public static final String KEY_SCHEDULE_DAY1_ACTIVITY ="day1_activity";
+    public static final String KEY_SCHEDULE_DAY2_ACTIVITY ="day2_activity";
+    public static final String KEY_SCHEDULE_DAY3_ACTIVITY ="day3_activity";
+    public static final String KEY_SCHEDULE_DAY4_ACTIVITY ="day4_activity";
+    public static final String KEY_SCHEDULE_DAY5_ACTIVITY ="day5_activity";
+    public static final String KEY_SCHEDULE_DAY6_ACTIVITY ="day6_activity";
+    public static final String KEY_SCHEDULE_DAY7_ACTIVITY ="day7_activity";
+    public static final String KEY_SCHEDULE_DAY1_TIME = "day1_time";
+    public static final String KEY_SCHEDULE_DAY2_TIME = "day2_time";
+    public static final String KEY_SCHEDULE_DAY3_TIME = "day3_time";
+    public static final String KEY_SCHEDULE_DAY4_TIME = "day4_time";
+    public static final String KEY_SCHEDULE_DAY5_TIME = "day5_time";
+    public static final String KEY_SCHEDULE_DAY6_TIME = "day6_time";
+    public static final String KEY_SCHEDULE_DAY7_TIME = "day7_time";
+    public static final String KEY_EQUIPMENT_LIST = "equipment_list";
+    public static final String KEY_NUMBER = "number";
+    public static final String KEY_MAIL = "mail";
+    public static final String KEY_ADDRESS = "address";
+    public static final String KEY_LOCATION = "location";
+    public static final String KEY_OPEN = "open";
 
     public static String welcome_Title = "";
     public static String welcomeMessage_Message = "";
 
+    public static final String TABLE_ACCOUNT_DETAILS_LAYOUT = "(" + ACCOUNTS_USERNAME + " text primary key," + ACCOUNTS_ALLERGY + " integer, "
+            + ACCOUNTS_ALLERGY_DETAILS + " text, " + ACCOUNTS_DISEASE + " integer, " + ACCOUNTS_DISEASE_DETAILS + " text, " + ACCOUNTS_DISABILITY
+            + " integer, " + ACCOUNTS_DISABILITY_DETAILS + " text, " + ACCOUNTS_FOOD_HABITS + " text, " + ACCOUNTS_SLEEPING_HABITS + " text, "
+            + ACCOUNTS_FEARS + " text, " + ACCOUNTS_LIKES + " text, " + ACCOUNTS_REST + " text);";
+
+    public static final String TABLE_ACCOUNT_EVALUATION_LAYOUT = "(" + ACCOUNTS_USERNAME + " text primary key," + ACCOUNTS_EV_EXPERIENCE_APP + " text, "
+            + ACCOUNTS_EV_HAS_INFO_CLEAR + " integer, " + ACCOUNTS_EV_INFO_CLEAR + " text, " + ACCOUNTS_EV_OTHER
+            + " text, " + ACCOUNTS_EV_EXPERIENCE_APP2 + " text, " + ACCOUNTS_EV_FEATURES + " text, "
+            + ACCOUNTS_EV_OTHER2 + " text);";
 
     private static final String DATABASE_CREATE="create table IF NOT EXISTS " + TABLE_MESSAGES + "(" + MESSAGES_ID
             + " text primary key, " + MESSAGES_MESSAGE + " text not null);";
     private static final String DATABASE_CREATE_ACCOUNTS="create table IF NOT EXISTS " + TABLE_ACCOUNTS + "(" + ACCOUNTS_ID
             + " text primary key, " + ACCOUNTS_PASSWORD + " text not null);";
-    private static final String DATABASE_CREATE_ACCOUNT_DETAILS="create table IF NOT EXISTS " + TABLE_ACCOUNT_DETAILS_LAYOUT + TABLE_ACCOUNT_DETAILS_LAYOUT;
+    private static final String DATABASE_CREATE_ACCOUNT_DETAILS="create table IF NOT EXISTS " + TABLE_ACCOUNT_DETAILS + TABLE_ACCOUNT_DETAILS_LAYOUT;
+    private static final String DATABASE_CREATE_ACCOUNT_EVALUATION="create table IF NOT EXISTS " + TABLE_ACCOUNT_EVALUATION + TABLE_ACCOUNT_EVALUATION_LAYOUT;
 
     private static final String DATABASE_DROP_TABLE="drop table if exists  " + TABLE_MESSAGES;
     private static final String DATABASE_DROP_ACCOUNTS="drop table if exists  " + TABLE_ACCOUNTS;
+    private static final String DATABASE_DROP_ACCOUNT_DETAILS="drop table if exists  " + TABLE_ACCOUNT_DETAILS;
+    private static final String DATABASE_DROP_ACCOUNT_EVALUATION="drop table if exists  " + TABLE_ACCOUNT_EVALUATION;
 
     public static SQLiteDatabase database;
 
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 5;
 
     public Database_SQL(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -80,13 +118,16 @@ public class Database_SQL extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_ACCOUNTS);
         db.execSQL(DATABASE_CREATE);
+        db.execSQL(DATABASE_CREATE_ACCOUNT_DETAILS);
+        db.execSQL(DATABASE_CREATE_ACCOUNT_EVALUATION);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
         db.execSQL(DATABASE_DROP_TABLE);
         db.execSQL(DATABASE_DROP_ACCOUNTS);
-        db.execSQL(DATABASE_CREATE_ACCOUNT_DETAILS);
+        db.execSQL(DATABASE_DROP_ACCOUNT_DETAILS);
+        db.execSQL(DATABASE_DROP_ACCOUNT_EVALUATION);
         onCreate(db);
     }
 
@@ -100,7 +141,7 @@ public class Database_SQL extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(MESSAGES_ID,key);
         values.put(MESSAGES_MESSAGE,message);
-        myDB.insert(TABLE_MESSAGES, null, values);
+        myDB.replace(TABLE_MESSAGES, null, values);
         Log.d("INSERT", "Inserted with key: " + key + " message: " + message );
     }
 
@@ -126,14 +167,14 @@ public class Database_SQL extends SQLiteOpenHelper {
         Cursor cursor = myDB.rawQuery(selectQuery, new String[]{key});
         String res ="";
 
-        if(!(cursor == null)){
+        if(!(cursor == null)&& cursor.getCount()>0){
             cursor.moveToFirst();
             res = cursor.getString(1);
             Log.d("DATABASE",res);
         }
 
         if(res==null)
-            res = "message not found";
+            res = "---";
         return res;
     }
 
@@ -159,4 +200,100 @@ public class Database_SQL extends SQLiteOpenHelper {
             res[0] = "Account not found";
         return res;
     }
+
+    /*
+    * Retrieve the values stored about the child from the database
+     */
+    public void getAboutChildValues(){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        String selectQuery = "SELECT *FROM " + TABLE_ACCOUNT_DETAILS + " WHERE " + ACCOUNTS_USERNAME + "=?";
+
+        Cursor cursor = myDB.rawQuery(selectQuery,new String[]{About_Child.id});
+
+        if(cursor!=null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            About_Child.has_allergy = 0;
+            About_Child.has_disease = 0;
+            About_Child.has_disability =0;
+            if(cursor.getInt(1)>-1)
+                About_Child.has_allergy = 1;
+            About_Child.allergy_details = cursor.getString(2);
+            if((cursor.getInt(3))>0){
+                About_Child.has_disease = 1;}
+            About_Child.disease_details = cursor.getString(4);
+            if(cursor.getInt(5)>0)
+                About_Child.has_disability = 1;
+            About_Child.disability_details = cursor.getString(6);
+            About_Child.food_habits = cursor.getString(7);
+            About_Child.sleeping_habits = cursor.getString(8);
+            About_Child.fears = cursor.getString(9);
+            About_Child.likes = cursor.getString(10);
+            About_Child.other = cursor.getString(11);
+        }
+    }
+
+    /*
+* Retrieve the values stored from the evaluation from the database
+ */
+    public void getEvaluationValues(){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        String selectQuery = "SELECT *FROM " + TABLE_ACCOUNT_EVALUATION + " WHERE " + ACCOUNTS_USERNAME + "=?";
+
+        Cursor cursor = myDB.rawQuery(selectQuery,new String[]{About_Child.id});
+
+        if(cursor!=null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            Evaluation_Values.has_Info_Clear = 0;
+            if(cursor.getInt(2)>-1)
+                Evaluation_Values.has_Info_Clear = 1;
+
+
+            Evaluation_Values.experience_App = cursor.getString(1);
+            Evaluation_Values.info_Clear = cursor.getString(3);
+            Evaluation_Values.other = cursor.getString(4);
+            Evaluation_Values.experience_App2 = cursor.getString(5);
+            Evaluation_Values.features = cursor.getString(6);
+            Evaluation_Values.other2 = cursor.getString(7);
+        }
+    }
+
+    /**
+     * Write the values stored about the child to the database
+     */
+    public void writeAboutChildValues(){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(ACCOUNTS_USERNAME, About_Child.id);
+        cv.put(ACCOUNTS_ALLERGY,About_Child.has_allergy);
+        cv.put(ACCOUNTS_ALLERGY_DETAILS, About_Child.allergy_details);
+        cv.put(ACCOUNTS_DISEASE,About_Child.has_disease);
+        cv.put(ACCOUNTS_DISEASE_DETAILS, About_Child.disease_details);
+        cv.put(ACCOUNTS_DISABILITY,About_Child.has_disability);
+        cv.put(ACCOUNTS_DISABILITY_DETAILS, About_Child.disability_details);
+        cv.put(ACCOUNTS_FOOD_HABITS, About_Child.food_habits);
+        cv.put(ACCOUNTS_SLEEPING_HABITS, About_Child.sleeping_habits);
+        cv.put(ACCOUNTS_FEARS, About_Child.fears);
+        cv.put(ACCOUNTS_LIKES, About_Child.likes);
+        cv.put(ACCOUNTS_REST, About_Child.other);
+        myDB.replace(TABLE_ACCOUNT_DETAILS,null, cv);
+    }
+
+    /**
+     * Write the values stored from the evaluation to the database
+     */
+    public void writeEvaluationValues(){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(ACCOUNTS_USERNAME, About_Child.id);
+        cv.put(ACCOUNTS_EV_EXPERIENCE_APP,Evaluation_Values.experience_App);
+        cv.put(ACCOUNTS_EV_HAS_INFO_CLEAR, Evaluation_Values.has_Info_Clear);
+        cv.put(ACCOUNTS_EV_INFO_CLEAR,Evaluation_Values.info_Clear);
+        cv.put(ACCOUNTS_EV_OTHER, Evaluation_Values.other);
+        cv.put(ACCOUNTS_EV_EXPERIENCE_APP2,Evaluation_Values.experience_App2);
+        cv.put(ACCOUNTS_EV_FEATURES, Evaluation_Values.features);
+        cv.put(ACCOUNTS_EV_OTHER2, Evaluation_Values.other2);
+        myDB.replace(TABLE_ACCOUNT_EVALUATION,null, cv);
+    }
+
+
 }

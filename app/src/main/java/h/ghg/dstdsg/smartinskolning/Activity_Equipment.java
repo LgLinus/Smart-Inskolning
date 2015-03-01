@@ -1,12 +1,14 @@
 package h.ghg.dstdsg.smartinskolning;
 
 import android.os.Bundle;
-import android.view.Menu;
+import android.text.Html;
 import android.view.MenuItem;
-import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 public class Activity_Equipment extends Activity_Base {
+
+    private TextView tvList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +21,13 @@ public class Activity_Equipment extends Activity_Base {
      * Initialize the activity
      */
     public void init(){
-        this.menu_button = (ImageButton)findViewById(R.id.ibMenu);
         super.init();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity__equipment, menu);
-        return true;
+        tvList = (TextView)findViewById(R.id.tvEquipment_list);
+        /* Set the list text equal to the text from the database */
+        tvList.setText(controller_menu.getValueFromDB(Database_SQL.KEY_EQUIPMENT_LIST));
+        /* Parse the text as HTML, giving us underlines at <u> and newlines at <br&> tags*/
+        tvList.setText(Html.fromHtml(String.format(tvList.getText().toString())));
+        //tvList.setText(tvList.getText().toString().replace("\u2022","\n\u2022"));
     }
 
     @Override

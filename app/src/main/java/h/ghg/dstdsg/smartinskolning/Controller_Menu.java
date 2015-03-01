@@ -3,23 +3,20 @@ package h.ghg.dstdsg.smartinskolning;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 /**
- * Class responsible of handling the logic in the
- * login menu
+ * Class responsible fr handling the navigation of the application
  * Created by Linus Granath on 2015-02-01.
  */
 public class Controller_Menu {
 
     private Activity_Base activity;
     private Database_SQL db;
+    protected ImageButton menu_button;
 
-    /**
-     *
-     * @param activity to control
-     */
     public Controller_Menu(Activity_Base activity){
         this.activity = activity;
         init();
@@ -29,6 +26,9 @@ public class Controller_Menu {
      * Initialize the components
      */
     public void init(){
+
+
+        /* Initialize the listener for the button */
         activity.getMenu_Button().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class Controller_Menu {
     }
 
     /* Display the popup menu */
-    private void showMenu(){
+    public void showMenu(){
         PopupMenu popup = new PopupMenu(activity, activity.getMenu_Button());
 
         popup.getMenuInflater().inflate(R.menu.menu,popup.getMenu());
@@ -141,4 +141,42 @@ public class Controller_Menu {
         popup.show();
     }
 
+    /**
+     * Write the about child values to the database
+     */
+    public void writeAboutChild(){
+        db = new Database_SQL(activity.getApplicationContext());
+        db.writeAboutChildValues();
+        db.close();
+    }
+
+    /**
+     * Write the evaluation values to the database
+     */
+    public void writeEvaluationValues(){
+        db = new Database_SQL(activity.getApplicationContext());
+        db.writeEvaluationValues();
+        db.close();
+    }
+
+    /**
+     * Get the about child values to the database
+     */
+    public void getAboutChild(){
+        db = new Database_SQL(activity.getApplicationContext());
+        db.getAboutChildValues();
+        db.close();
+    }
+
+    /**
+     * Retrieves the corresponding value with the given key from the SQL database
+     * @param key to search for
+     * @return value to return
+     */
+    public String getValueFromDB(String key){
+        String res="";
+        db = new Database_SQL(activity.getApplicationContext());
+        res = db.getMessage(key);
+        return res;
+    }
 }
