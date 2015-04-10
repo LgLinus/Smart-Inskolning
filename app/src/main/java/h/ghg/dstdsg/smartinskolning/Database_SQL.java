@@ -41,6 +41,7 @@ public class Database_SQL extends SQLiteOpenHelper {
 
 
     public static final String TABLE_ACCOUNT_EVALUATION = "Evaluation";
+    public static final String TABLE_CONTACT_INFORMATION = "Contact";
     public static final String ACCOUNTS_EV_EXPERIENCE_APP = "_ev_experience";
     public static final String ACCOUNTS_EV_EXPERIENCE_APP2 = "_ev_experience2";
     public static final String ACCOUNTS_EV_OTHER = "_ev_other";
@@ -81,6 +82,12 @@ public class Database_SQL extends SQLiteOpenHelper {
     public static final String KEY_ADDRESS = "address";
     public static final String KEY_LOCATION = "location";
     public static final String KEY_OPEN = "open";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_CONTACT_MAIL = "_mail";
+    public static final String KEY_CONTACT_NUMBER = "_number";
+    public static final String KEY_CONTACT_IMAGE = "_image";
+    public static final String KEY_CONTACT_NAME = "_name";
+    public static final String KEY_CONTACT_PROFESSION = "_profession";
 
     public static String welcome_Title = "";
     public static String welcomeMessage_Message = "";
@@ -89,6 +96,9 @@ public class Database_SQL extends SQLiteOpenHelper {
             + ACCOUNTS_ALLERGY_DETAILS + " text, " + ACCOUNTS_DISEASE + " integer, " + ACCOUNTS_DISEASE_DETAILS + " text, " + ACCOUNTS_DISABILITY
             + " integer, " + ACCOUNTS_DISABILITY_DETAILS + " text, " + ACCOUNTS_FOOD_HABITS + " text, " + ACCOUNTS_SLEEPING_HABITS + " text, "
             + ACCOUNTS_FEARS + " text, " + ACCOUNTS_LIKES + " text, " + ACCOUNTS_REST + " text);";
+
+    public static final String TABLE_CONTACT_INFORMATION_LAYOUT = "(" + KEY_ID + " integer primary key," + KEY_CONTACT_NAME + " text, "
+            + KEY_CONTACT_MAIL + " text, " + KEY_CONTACT_NUMBER + " text, " + KEY_CONTACT_IMAGE + " text, " + KEY_CONTACT_PROFESSION + " text);";
 
     public static final String TABLE_ACCOUNT_EVALUATION_LAYOUT = "(" + ACCOUNTS_USERNAME + " text primary key," + ACCOUNTS_EV_EXPERIENCE_APP + " text, "
             + ACCOUNTS_EV_HAS_INFO_CLEAR + " integer, " + ACCOUNTS_EV_INFO_CLEAR + " text, " + ACCOUNTS_EV_OTHER
@@ -101,16 +111,18 @@ public class Database_SQL extends SQLiteOpenHelper {
             + " text primary key, " + ACCOUNTS_PASSWORD + " text not null);";
     private static final String DATABASE_CREATE_ACCOUNT_DETAILS="create table IF NOT EXISTS " + TABLE_ACCOUNT_DETAILS + TABLE_ACCOUNT_DETAILS_LAYOUT;
     private static final String DATABASE_CREATE_ACCOUNT_EVALUATION="create table IF NOT EXISTS " + TABLE_ACCOUNT_EVALUATION + TABLE_ACCOUNT_EVALUATION_LAYOUT;
+    private static final String DATABASE_CREATE_CONTACT_INFORMATION="create table IF NOT EXISTS " + TABLE_CONTACT_INFORMATION + TABLE_CONTACT_INFORMATION_LAYOUT;
 
     private static final String DATABASE_DROP_TABLE="drop table if exists  " + TABLE_MESSAGES;
     private static final String DATABASE_DROP_ACCOUNTS="drop table if exists  " + TABLE_ACCOUNTS;
     private static final String DATABASE_DROP_ACCOUNT_DETAILS="drop table if exists  " + TABLE_ACCOUNT_DETAILS;
     private static final String DATABASE_DROP_ACCOUNT_EVALUATION="drop table if exists  " + TABLE_ACCOUNT_EVALUATION;
+    private static final String DATABASE_DROP_CONTACT_INFORMATION="drop table if exists  " + TABLE_CONTACT_INFORMATION;
 
     public static SQLiteDatabase database;
 
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 6;
 
     public Database_SQL(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -120,6 +132,7 @@ public class Database_SQL extends SQLiteOpenHelper {
         db.execSQL(DATABASE_CREATE);
         db.execSQL(DATABASE_CREATE_ACCOUNT_DETAILS);
         db.execSQL(DATABASE_CREATE_ACCOUNT_EVALUATION);
+        db.execSQL(DATABASE_CREATE_CONTACT_INFORMATION);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
@@ -128,6 +141,7 @@ public class Database_SQL extends SQLiteOpenHelper {
         db.execSQL(DATABASE_DROP_ACCOUNTS);
         db.execSQL(DATABASE_DROP_ACCOUNT_DETAILS);
         db.execSQL(DATABASE_DROP_ACCOUNT_EVALUATION);
+        db.execSQL(DATABASE_DROP_CONTACT_INFORMATION);
         onCreate(db);
     }
 
@@ -143,6 +157,27 @@ public class Database_SQL extends SQLiteOpenHelper {
         values.put(MESSAGES_MESSAGE,message);
         myDB.replace(TABLE_MESSAGES, null, values);
         Log.d("INSERT", "Inserted with key: " + key + " message: " + message );
+    }
+
+
+    /**
+     * Add a new contact to the database
+     * @param id unique id
+     * @param name name of contact
+     * @param mail mail of contact
+     * @param number number of contact
+     * @param image of contact
+     */
+    public void addContact(int id, String name, String mail,String number, String image, String profession){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID,id);
+        values.put(KEY_CONTACT_NAME,name);
+        values.put(KEY_CONTACT_MAIL,mail);
+        values.put(KEY_CONTACT_NUMBER,number);
+        values.put(KEY_CONTACT_IMAGE,image);
+        values.put(KEY_CONTACT_PROFESSION,profession);
+        myDB.replace(TABLE_CONTACT_INFORMATION, null, values);
     }
 
     /**
@@ -194,6 +229,34 @@ public class Database_SQL extends SQLiteOpenHelper {
             cursor.moveToFirst();
             res[0] = cursor.getString(0); // Account
             res[1] = cursor.getString(1); // Password
+        }
+
+        if(res[0] == null)
+            res[0] = "Account not found";
+        return res;
+    }
+
+    /**
+     * Retrieve contact information
+     * @return account and password
+     */
+    public String[] getContact_Information(){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        String selectQuery = "SELECT *FROM " + TABLE_CONTACT_INFORMATION;
+
+        Cursor cursor = myDB.rawQuery(selectQuery,null);
+        String[] res = {"",""};
+
+        if(cursor!=null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                Contact_Information.addContact(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+                cursor.moveToNext();
+            }
+            while(!cursor.isAfterLast());
+
+
+
         }
 
         if(res[0] == null)

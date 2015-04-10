@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="h.ghg.dstdsg.smartinskolning" >
-
-    <!--  Internet Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="h.ghg.dstdsg.smartinskolning"
+    >
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/MyTheme" >
+        android:theme="@style/MyTheme"
+        >
         <activity
             android:name=".Activity_Login"
             android:label="@string/app_name"
-            android:theme="@style/MyTheme" >
+            android:theme="@style/MyTheme"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,45 +21,57 @@
         </activity>
         <activity
             android:name=".Activity_Welcome"
-            android:theme="@style/MyTheme" >
+            android:theme="@style/MyTheme"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_Contacts"
-            android:label="@string/title_activity_activity__contacts" >
+            android:label="@string/title_activity_activity__contacts"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_Schedule"
-            android:label="@string/title_activity_activity__schedule" >
+            android:label="@string/title_activity_activity__schedule"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Activity_Equipment"
-            android:label="@string/title_activity_activity__equipment" >
+            android:label="@string/title_activity_activity__equipment"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Activity_Here_We_Are"
-            android:label="@string/title_activity_activity__here__we_are" >
+            android:label="@string/title_activity_activity__here__we_are"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_About_Child_1"
-            android:label="@string/title_activity_activity__about__child" >
+            android:label="@string/title_activity_activity__about__child"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".Activity_About_Child_2">
+            android:name=".Activity_About_Child_2"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".Activity_About_Child_3">
+            android:name=".Activity_About_Child_3"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_Routine"
-            android:label="@string/title_activity_activity__routine" >
+            android:label="@string/title_activity_activity__routine"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_Evaluation"
-            android:label="@string/title_activity_activity__evaluation" >
+            android:label="@string/title_activity_activity__evaluation"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activity_Evaluation_2"
-            android:label="" >
+            android:label=""
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

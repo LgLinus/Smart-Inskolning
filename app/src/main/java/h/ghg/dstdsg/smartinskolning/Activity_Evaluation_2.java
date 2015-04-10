@@ -61,10 +61,10 @@ public class Activity_Evaluation_2 extends Activity_Base {
                 // Intent i = new Intent(getApplicationContext(),Activity_Evaluation_2.class);
                 //startActivity(i) ;
 
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
+
                 controller_menu.writeEvaluationValues();
 
-                Toast.makeText(getApplicationContext(), "Allergy " + About_Child.allergy_details + "\nDisease" +
-                        About_Child.disease_details + "\nDisability" + About_Child.disability_details, Toast.LENGTH_LONG).show();
 
             }
         });

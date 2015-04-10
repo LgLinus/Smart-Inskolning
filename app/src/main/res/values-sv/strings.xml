@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Smart inskolning</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Inställningar</string>
+    <string name="username">Användarnamn</string>
+    <string name="password">Lösenord</string>
+    <string name="login">Login</string>
+    <string name="menu_start_page">Start sida</string>
+    <string name="menu_here_we_are">Här är vi</string>
+    <string name="menu_routine">Rutiner</string>
+    <string name="menu_schedule">Schema</string>
+    <string name="menu_equipment">Utrustning</string>
+    <string name="menu_about_child">Om barnet</string>
+    <string name="menu_evaluation">Utvärdering</string>
+    <string name="menu_contact">Kontakt</string>
+    <string name="title_activity_activity__welcome">Activity_Welcome</string>
+    <string name="already_in_screen">Du är redan på denna sida!</string>
+    <string name="title_activity_activity__contacts">Activity_Contacts</string>
+    <string name="title_activity_activity__schedule">Activity_Schedule</string>
+    <string name="title_activity_activity__equipment">Activity_Equipment</string>
+    <string name="title_activity_activity__here__we_are">Activity_Here_We_are</string>
+    <string name="title_activity_activity__about__child">Activity_About_Child</string>
+    <string name="title_activity_activity__routine">Activity_Routine</string>
+    <string name="title_activity_activity__evaluation">Activity_Evaluation</string>
+    <string name="menu_routine_title">Information om rutiner</string>
+    <string name="menu_routine_message">\nDag 1-5 på inskolningen är vårdnadshavare med barnet större delen av dagarna för att hjälpa barnet att känna sig tryggt.
+    \n\n
+    Dag 6-7 är det dags att vårdnadshavare lämnar sitt barn på förskolan för en heldag. Det är viktigt att vårdnadshavare går att kontakta på telefon och kan hämta vid behov.
+    \n\n
+    Ytterligare information får ni första dagen ni kommer till förskolan. Se även schemat.\n</string>
+    <string name="menu_routine_number">0735059033</string>
+    <string name="menu_routine_questions_call">Vid frågor ring: </string>
+    <string name="wrong_login_details">Ni angav fel lösenord eller användarnamn</string>
+    <string name="no_input">Ni måste mata in ett lösenord och användarnamn</string>
+    <string name="about_child">Om barnet:</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="allergy">Allergi</string>
+    <string name="disease">Sjukdom</string>
+    <string name="disability">Funktionsnedsättning</string>
+    <string name="if_yes">Om ja:</string>
+    <string name="next">Nästa</string>
+    <string name="food_habits">Matvanor</string>
+    <string name="sleeping_habits">Sovvanors</string>
+    <string name="other">Övrigt</string>
+    <string name="likes">Tycker om</string>
+    <string name="fears">Rädslor</string>
+    <string name="book">Boka</string>
+    <string name="finish">Skicka in</string>
+    <string name="day">Dag</string>
+    <string name="activity">Aktivitet</string>
+    <string name="time">Tid</string>
+    <string name="synq">Synka med kalendern</string>
+    <string name="schedule">Schema under inskolningen</string>
+    <string name="equipment">Detta medtages till förskolan första dagen:</string>
+    <string name="clothes"> &lt;u>Kläder &lt;/u></string>
+    <string name="diapers"> &lt;u>Blöjor &lt;/u></string>
+    <string name="sleep"> &lt;u>Sova &lt;/u></string>
+    <string name="name_on_children">Glöm ej att skriva namn på ert barns tillhörigheter!</string>
+    <string name="schedule_change">Obs! Schemat kan ändras på begäran.</string>
+    <string name="contact">Kontakta oss på:</string>
+    <string name="mail">Mail:</string>
+    <string name="phone">Telefon:</string>
+    <string name="address">Address:</string>
+    <string name="sick_call">Vid sjukfrånvaro ring:</string>
+    <string name="map">Karta: </string>
+    <string name="open">Öppna:</string>
+    <string name="evaluation_title">Utvärdering av Smart Inskolning:\n</string>
+    <string name="experience_app">Hur tyckte ni att inskolningen gick?\n</string>
+    <string name="info_clear_cb">Upplevde ni att informationen var tillräckligt tydlig?\n</string>
+    <string name="info_clear">Om nej, vad kan förbättras?\n</string>
+    <string name="ev_other">Övriga synpunkter om inskolningen\n</string>
+    <string name="ev_other2">Överiga synpunkter\n</string>
+    <string name="ev_features">Beskriv vilken ytterligare informatino ni önksat?\n</string>
+    <string name="ev_experience_app">Hur tyckte ni att användningen av applikationen fungerade och varför?\n</string>
+    <string name="saved">Sparat!\n</string>
+</resources>

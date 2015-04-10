@@ -33,7 +33,6 @@ public class Controller_Menu {
             @Override
             public void onClick(View view) {
                 showMenu();
-                Toast.makeText(activity.getApplicationContext(), "Options pressed", Toast.LENGTH_SHORT).show();
             }
         });
         db = new Database_SQL(activity.getApplicationContext());

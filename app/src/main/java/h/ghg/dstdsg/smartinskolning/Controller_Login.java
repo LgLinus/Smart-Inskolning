@@ -36,7 +36,7 @@ public class Controller_Login {
         initdb();
     }
 
-    // TODO unfinished method to handle login
+    /* Login method */
     private void login(){
 
         /// Retrieve the username and password that has been entered, ignore spaces
@@ -58,7 +58,7 @@ public class Controller_Login {
                 About_Child.id = loginInfo[0];
                 db.getAboutChildValues();
                 db.getEvaluationValues();
-                Toast.makeText(activity.getApplicationContext(),About_Child.id + "\n" + About_Child.fears,Toast.LENGTH_LONG).show();
+                db.getContact_Information();
                 Intent i = new Intent(activity.getApplicationContext(), Activity_Welcome.class);
                 activity.finish();
                 activity.startActivity(i);
@@ -74,6 +74,9 @@ public class Controller_Login {
 
     // Initializes the database
     private void initdb(){
+        db.addContact(1,"Linus Granath","Libuz94@gmail.com","0760-321362","linus","developer");
+        db.addContact(2,"Amanda Oaksson","amanda313@gmail.com","076-135168","profile","teacher");
+        db.addContact(3,"Göran göransson","GÖ21@gmail.com","076-28714","profile","teacher");
         db.addMessage(Database_SQL.KEY_SCHEDULE_DAY1_TIME,"9.00-10.00");
         db.addMessage(Database_SQL.KEY_EQUIPMENT_LIST,"<u>Clothes</u><br/>\u2022 Regnjacka med galonbyxor<br/>\u2022 Strumpor<br/>\u2022 Kalsonger/Trosor<br/>\u2022 Byxor, shorts<br/>\u2022 Tröjor: långärmade, kortärmade<br/> (tunna och tjocka)" +
                 "<br/>\u2022 Vantar, mössa(vid säsong)<br/><u>Blöjor</u><br/>\u2022 Ett paket blöjor till att börja med" +
@@ -96,8 +99,14 @@ public class Controller_Login {
         db.addMessage(Database_SQL.KEY_SCHEDULE_DAY6_ACTIVITY,"Heldag utan vård.hav");
         db.addMessage(Database_SQL.KEY_SCHEDULE_DAY7_TIME,"9.00-15.00");
         db.addMessage(Database_SQL.KEY_SCHEDULE_DAY7_ACTIVITY,"Heldag utan vård.hav");
+
+        /* Användarkonton skapas */
         db.addAccount("test","pass");
         db.addAccount("linus","granath");
+        db.addAccount("pär","pass");
+        db.addAccount("ida","losen");
+
+
         db.addMessage(Database_SQL.KEY_WELCOME_TITLE,"Varmt välkomna till Appis förskola!");
         db.addMessage(Database_SQL.KEY_WELCOME_MESSAGE,"Vi är glada att få lära känner er och ert barn och hoppas att ni kommer trivas hos oss.\n\n" +
                 "Vi har öppet hus vecka 28, måndag-torsdag kl. 0900-14.00, kom gärna förbi och titta runt. Själva inskolningen börjar vecka 30.");

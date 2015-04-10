@@ -11,7 +11,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="4.99"
+            android:layout_weight="8"
             android:layout_height="wrap_content"
             android:text="@string/allergy"
             android:textSize="@dimen/default_text_size_message"
@@ -22,6 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checked="false"
+            android:layout_gravity="center_vertical"
             android:layout_weight="@integer/weight_sum_checkbox"
             android:button="@drawable/checkbox_style"/>
 

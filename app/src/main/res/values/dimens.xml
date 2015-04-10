@@ -8,6 +8,7 @@
     <dimen name="default_text_size_message_title">22sp</dimen>
     <dimen name="default_text_size_message">18sp</dimen>
     <dimen name="default_edit_text_padding_bot">28sp</dimen>
+    <dimen name="default_padding_contact_image">14sp</dimen>
     <dimen name="default_text_small_size">14sp</dimen>
 
     <integer name="weight_sum_space_checkbox">1</integer>

@@ -64,8 +64,7 @@ public class Activity_About_Child_3 extends Activity_Base {
 
                 controller_menu.writeAboutChild();
 
-                Toast.makeText(getApplicationContext(), "Allergy " + About_Child.allergy_details + "\nDisease" +
-                        About_Child.disease_details + "\nDisability" + About_Child.disability_details, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
 
                 //Intent i = new Intent(getApplicationContext(),Activity_About_Child_2.class);
                 //startActivity(i);
